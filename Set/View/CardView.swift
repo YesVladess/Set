@@ -11,22 +11,29 @@ struct CardView: View {
 
     let card: SetGame.Card
 
+    private var numberOfShapes: CGFloat {
+        CGFloat(card.number.rawValue)
+    }
+
     var body: some View {
         GeometryReader(content: { geometry in
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
                 shape.fill().foregroundColor(.white)
                 shape.stroke(lineWidth: 1)
-                getShapes()
+                getShapes(size: geometry.size)
             }
         })
     }
 
-    private func getCardShape() -> AnyShape {
+    private func getCardShape(size: CGSize) -> AnyShape {
         var shape: AnyShape
         switch card.shapeType {
         case .diamond:
-            shape = AnyShape(Circle())
+            let halfHeight = size.height * 0.25 / 2
+            let halfWidth = size.width * 0.8 / 2
+            shape = AnyShape(Diamond(halfHeight: halfHeight,
+                                     halfWidth: halfWidth))
         case .oval:
             shape = AnyShape(Rectangle())
         case .squiggle:
@@ -35,8 +42,8 @@ struct CardView: View {
         return shape
     }
 
-    private func getStyledShape() -> AnyView {
-        let cardShape = getCardShape()
+    private func getStyledShape(size: CGSize) -> AnyView {
+        let cardShape = getCardShape(size: size)
         switch card.style {
         case .solid:
             return AnyView(cardShape.fill())
@@ -47,8 +54,8 @@ struct CardView: View {
         }
     }
 
-    private func getColoredStyledShape() -> some View {
-        let styledShape = getStyledShape()
+    private func getColoredStyledShape(size: CGSize) -> some View {
+        let styledShape = getStyledShape(size: size)
         switch card.color {
         case .green:
             return styledShape.foregroundColor(.green)
@@ -60,8 +67,8 @@ struct CardView: View {
     }
 
     @ViewBuilder
-    private func getShapes() -> some View {
-        let coloredStyledShape = getColoredStyledShape()
+    private func getShapes(size: CGSize) -> some View {
+        let coloredStyledShape = getColoredStyledShape(size: size)
         VStack(alignment: .center, spacing: 5) {
             switch card.number {
             case .one:
@@ -81,12 +88,13 @@ struct CardView: View {
         static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
     }
+    
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGame.Card(number: .three,
-                                    shapeType: .squiggle,
+        CardView(card: SetGame.Card(number: .one,
+                                    shapeType: .diamond,
                                     style: .stripped,
                                     color: .blue)
         )

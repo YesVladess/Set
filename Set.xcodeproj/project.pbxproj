@@ -16,6 +16,7 @@
 		5A7BF4FB282EF51E0091C0F2 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF4FA282EF51E0091C0F2 /* SetGame.swift */; };
 		5A7BF4FD282EF9E80091C0F2 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */; };
 		5A7BF4FF282F11110091C0F2 /* AnyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF4FE282F11110091C0F2 /* AnyShape.swift */; };
+		5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF501282F9D7E0091C0F2 /* Diamond.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5A7BF4FA282EF51E0091C0F2 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		5A7BF4FE282F11110091C0F2 /* AnyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyShape.swift; sourceTree = "<group>"; };
+		5A7BF501282F9D7E0091C0F2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				5A7BF4F6282EF4470091C0F2 /* CardView.swift */,
 				5A7BF4FE282F11110091C0F2 /* AnyShape.swift */,
 				5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */,
+				5A7BF501282F9D7E0091C0F2 /* Diamond.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				5A7BF4F7282EF4470091C0F2 /* CardView.swift in Sources */,
 				5A7BF4FD282EF9E80091C0F2 /* AspectVGrid.swift in Sources */,
 				5A7BF4FF282F11110091C0F2 /* AnyShape.swift in Sources */,
+				5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */,
 				5A7BF4FB282EF51E0091C0F2 /* SetGame.swift in Sources */,
 				5A7BF4F5282EF3F00091C0F2 /* SetGameView.swift in Sources */,
 				5A7BF4F9282EF50B0091C0F2 /* SetGameViewModel.swift in Sources */,
