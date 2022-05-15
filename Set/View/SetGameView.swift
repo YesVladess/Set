@@ -25,6 +25,7 @@ struct SetGameView: View {
             Spacer()
             HStack(alignment: .firstTextBaseline, spacing: DrawingConstants.bottomElementsSpacing) {
                 newGameButton.padding(.horizontal)
+                dealButton.padding(.horizontal)
                 gameInfoView.padding(.horizontal)
             }
             .padding(.horizontal)
@@ -46,8 +47,19 @@ struct SetGameView: View {
             game.newGame()
         } label: {
             VStack {
-                Image(systemName: "plus.rectangle.fill").font(.largeTitle)
+                Image(systemName: "gamecontroller").font(.largeTitle)
                 Text("New game")
+            }
+        }
+    }
+
+    private var dealButton: some View {
+        Button {
+            game.deal()
+        } label: {
+            VStack {
+                Image(systemName: "plus.rectangle.fill").font(.largeTitle)
+                Text("Deal more")
             }
         }
     }
