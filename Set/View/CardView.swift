@@ -23,48 +23,6 @@ struct CardView: View {
         })
     }
 
-    private func getCardShape(size: CGSize) -> AnyShape {
-        var shape: AnyShape
-        switch card.shape {
-        case .diamond:
-            let halfHeight = size.height * 0.25 / 2
-            let halfWidth = size.width * 0.4
-            shape = AnyShape(Diamond(halfHeight: halfHeight,
-                                     halfWidth: halfWidth))
-        case .oval:
-            shape = AnyShape(Oval(halfHeight: size.height * 0.1,
-                                  halfWidth: size.width * 0.4))
-        case .squiggle:
-            shape = AnyShape(Squiggle(halfHeight: size.height * 0.1,
-                                      halfWidth: size.width * 0.4))
-        }
-        return shape
-    }
-
-    private func getStyledShape(size: CGSize) -> AnyView {
-        let cardShape = getCardShape(size: size)
-        switch card.style {
-        case .solid:
-            return AnyView(cardShape.fill())
-        case .stripped:
-            return AnyView(cardShape.fill().opacity(0.3))
-        case .open:
-            return AnyView(cardShape.stroke().fill())
-        }
-    }
-
-    private func getColoredStyledShape(size: CGSize) -> some View {
-        let styledShape = getStyledShape(size: size)
-        switch card.color {
-        case .green:
-            return styledShape.foregroundColor(.green)
-        case .red:
-            return styledShape.foregroundColor(.red)
-        case .blue:
-            return styledShape.foregroundColor(.blue)
-        }
-    }
-
     @ViewBuilder
     private func getShapes(size: CGSize) -> some View {
         let coloredStyledShape = getColoredStyledShape(size: size)
@@ -85,6 +43,47 @@ struct CardView: View {
         }.padding(5)
     }
 
+    @ViewBuilder
+    private func getColoredStyledShape(size: CGSize) -> some View {
+        let styledShape = getCardShape(size: size)
+        switch card.color {
+        case .green:
+            styledShape.foregroundColor(.green)
+        case .red:
+            styledShape.foregroundColor(.red)
+        case .blue:
+            styledShape.foregroundColor(.blue)
+        }
+    }
+
+    @ViewBuilder
+    private func getCardShape(size: CGSize) -> some View {
+        let shape: AnyShape = {
+            switch card.shape {
+            case .diamond:
+                let halfHeight = size.height * 0.25 / 2
+                let halfWidth = size.width * 0.4
+                return AnyShape(Diamond(halfHeight: halfHeight,
+                                       halfWidth: halfWidth))
+            case .oval:
+                return AnyShape(Oval(halfHeight: size.height * 0.1,
+                                    halfWidth: size.width * 0.4))
+            case .squiggle:
+                return AnyShape(Squiggle(halfHeight: size.height * 0.1,
+                                        halfWidth: size.width * 0.4))
+            }
+        }()
+
+        switch card.style {
+        case .solid:
+            AnyView(shape.fill())
+        case .stripped:
+            AnyView(shape.fill().opacity(0.3))
+        case .open:
+            AnyView(shape.stroke().fill())
+        }
+    }
+
     private struct DrawingConstants {
         static let cornerRadius: CGFloat = 10
         static let lineWidth: CGFloat = 3
@@ -94,7 +93,8 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGameViewModel.CardViewModel(shape: .squiggle,
+        CardView(card: SetGameViewModel.CardViewModel(id: 3,
+                                                      shape: .squiggle,
                                                       style: .stripped,
                                                       color: .green,
                                                       quantity: 2)
