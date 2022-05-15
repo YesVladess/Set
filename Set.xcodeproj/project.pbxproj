@@ -17,6 +17,8 @@
 		5A7BF4FD282EF9E80091C0F2 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */; };
 		5A7BF4FF282F11110091C0F2 /* AnyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF4FE282F11110091C0F2 /* AnyShape.swift */; };
 		5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF501282F9D7E0091C0F2 /* Diamond.swift */; };
+		5A7BF50528300F920091C0F2 /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF50428300F920091C0F2 /* Oval.swift */; };
+		5AFC9F4428310F5500362857 /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC9F4328310F5500362857 /* Squiggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		5A7BF4FE282F11110091C0F2 /* AnyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyShape.swift; sourceTree = "<group>"; };
 		5A7BF501282F9D7E0091C0F2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		5A7BF50428300F920091C0F2 /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
+		5AFC9F4328310F5500362857 /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +92,19 @@
 				5A7BF4F6282EF4470091C0F2 /* CardView.swift */,
 				5A7BF4FE282F11110091C0F2 /* AnyShape.swift */,
 				5A7BF4FC282EF9E80091C0F2 /* AspectVGrid.swift */,
-				5A7BF501282F9D7E0091C0F2 /* Diamond.swift */,
+				5A7BF5032830063F0091C0F2 /* Shapes */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5A7BF5032830063F0091C0F2 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BF501282F9D7E0091C0F2 /* Diamond.swift */,
+				5A7BF50428300F920091C0F2 /* Oval.swift */,
+				5AFC9F4328310F5500362857 /* Squiggle.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,9 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFC9F4428310F5500362857 /* Squiggle.swift in Sources */,
 				5A7BF4E5282EF1870091C0F2 /* SetApp.swift in Sources */,
 				5A7BF4F7282EF4470091C0F2 /* CardView.swift in Sources */,
 				5A7BF4FD282EF9E80091C0F2 /* AspectVGrid.swift in Sources */,
+				5A7BF50528300F920091C0F2 /* Oval.swift in Sources */,
 				5A7BF4FF282F11110091C0F2 /* AnyShape.swift in Sources */,
 				5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */,
 				5A7BF4FB282EF51E0091C0F2 /* SetGame.swift in Sources */,

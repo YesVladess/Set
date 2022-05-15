@@ -12,7 +12,7 @@ struct CardView: View {
     let card: SetGame.Card
 
     private var numberOfShapes: CGFloat {
-        CGFloat(card.number.rawValue)
+        CGFloat(card.numberOfShapes)
     }
 
     var body: some View {
@@ -28,16 +28,18 @@ struct CardView: View {
 
     private func getCardShape(size: CGSize) -> AnyShape {
         var shape: AnyShape
-        switch card.shapeType {
+        switch card.shape {
         case .diamond:
             let halfHeight = size.height * 0.25 / 2
-            let halfWidth = size.width * 0.8 / 2
+            let halfWidth = size.width * 0.4
             shape = AnyShape(Diamond(halfHeight: halfHeight,
                                      halfWidth: halfWidth))
         case .oval:
-            shape = AnyShape(Rectangle())
+            shape = AnyShape(Oval(halfHeight: size.height * 0.1,
+                                  halfWidth: size.width * 0.4))
         case .squiggle:
-            shape = AnyShape(Ellipse())
+            shape = AnyShape(Squiggle(halfHeight: size.height * 0.1,
+                                      halfWidth: size.width * 0.4))
         }
         return shape
     }
@@ -48,7 +50,7 @@ struct CardView: View {
         case .solid:
             return AnyView(cardShape.fill())
         case .stripped:
-            return AnyView(cardShape.stroke(lineWidth: DrawingConstants.lineWidth))
+            return AnyView(cardShape.fill().opacity(0.3))
         case .open:
             return AnyView(cardShape.stroke().fill())
         }
@@ -70,16 +72,18 @@ struct CardView: View {
     private func getShapes(size: CGSize) -> some View {
         let coloredStyledShape = getColoredStyledShape(size: size)
         VStack(alignment: .center, spacing: 5) {
-            switch card.number {
-            case .one:
+            switch card.numberOfShapes {
+            case 1:
                 coloredStyledShape
-            case .two:
-                coloredStyledShape
-                coloredStyledShape
-            case .three:
+            case 2:
                 coloredStyledShape
                 coloredStyledShape
+            case 3:
                 coloredStyledShape
+                coloredStyledShape
+                coloredStyledShape
+            default:
+                EmptyView()
             }
         }.padding(5)
     }
@@ -93,8 +97,8 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGame.Card(number: .one,
-                                    shapeType: .diamond,
+        CardView(card: SetGame.Card(numberOfShapes: 3,
+                                    shape: .squiggle,
                                     style: .stripped,
                                     color: .blue)
         )

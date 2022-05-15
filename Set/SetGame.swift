@@ -10,29 +10,25 @@ import SwiftUI
 
 struct SetGame {
 
+    private let avaliableRangeOfShapeNumber = 1...3
+
     private(set) var cards: [Card]
     private(set) var score: Int = 0
 
     struct Card: Equatable, Identifiable {
 
         static func == (lhs: SetGame.Card, rhs: SetGame.Card) -> Bool {
-            lhs.shapeType == rhs.shapeType && lhs.number == rhs.number && lhs.style == rhs.style
+            lhs.shape == rhs.shape && lhs.numberOfShapes == rhs.numberOfShapes && lhs.style == rhs.style
         }
 
         var id: Int {
-            return number.rawValue + shapeType.rawValue * 10 + style.rawValue * 100 + color.rawValue * 1000
+            return numberOfShapes + shape.rawValue * 10 + style.rawValue * 100 + color.rawValue * 1000
         }
 
-        enum ShapeType: Int, CaseIterable {
+        enum Shape: Int, CaseIterable {
             case diamond
             case squiggle
             case oval
-        }
-
-        enum NumberOfShapes: Int, CaseIterable {
-            case one = 1
-            case two = 2
-            case three = 3
         }
 
         enum Style: Int, CaseIterable {
@@ -47,24 +43,25 @@ struct SetGame {
             case blue
         }
 
-        let number: NumberOfShapes
-        let shapeType: ShapeType
+        let numberOfShapes: Int
+        let shape: Shape
         let style: Style
         let color: Color
+
     }
 
     init() {
         cards = []
-        for shape in Card.ShapeType.allCases {
-            for number in Card.NumberOfShapes.allCases {
+        for shape in Card.Shape.allCases {
+            for number in avaliableRangeOfShapeNumber {
                 for style in Card.Style.allCases {
                     for color in Card.Color.allCases {
-                        cards.append(Card(number: number, shapeType: shape, style: style, color: color))
+                        cards.append(Card(numberOfShapes: number, shape: shape, style: style, color: color))
                     }
                 }
             }
         }
-        cards.shuffle()
+        //cards.shuffle()
         print("Game Initialized with \(cards.count) cards")
     }
 
