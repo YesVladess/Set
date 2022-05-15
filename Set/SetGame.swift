@@ -10,58 +10,47 @@ import SwiftUI
 
 struct SetGame {
 
-    private let avaliableRangeOfShapeNumber = 1...3
-
     private(set) var cards: [Card]
     private(set) var score: Int = 0
 
-    struct Card: Equatable, Identifiable {
+    struct Card: Equatable {
+
+        enum Feature: Int, CaseIterable {
+            case firstPossibilitie
+            case secondPossibilitie
+            case thirdPossibilitie
+        }
+
+        let firstFeature: Feature
+        let secondFeature: Feature
+        let thirdFeature: Feature
+        let fourthFeature: Feature
 
         static func == (lhs: SetGame.Card, rhs: SetGame.Card) -> Bool {
-            lhs.shape == rhs.shape && lhs.numberOfShapes == rhs.numberOfShapes && lhs.style == rhs.style
+            lhs.firstFeature == rhs.firstFeature &&
+            lhs.secondFeature == rhs.secondFeature &&
+            lhs.thirdFeature == rhs.thirdFeature &&
+            lhs.fourthFeature == rhs.fourthFeature
         }
-
-        var id: Int {
-            return numberOfShapes + shape.rawValue * 10 + style.rawValue * 100 + color.rawValue * 1000
-        }
-
-        enum Shape: Int, CaseIterable {
-            case diamond
-            case squiggle
-            case oval
-        }
-
-        enum Style: Int, CaseIterable {
-            case solid
-            case stripped
-            case open
-        }
-
-        enum Color: Int, CaseIterable {
-            case red
-            case green
-            case blue
-        }
-
-        let numberOfShapes: Int
-        let shape: Shape
-        let style: Style
-        let color: Color
 
     }
 
     init() {
         cards = []
-        for shape in Card.Shape.allCases {
-            for number in avaliableRangeOfShapeNumber {
-                for style in Card.Style.allCases {
-                    for color in Card.Color.allCases {
-                        cards.append(Card(numberOfShapes: number, shape: shape, style: style, color: color))
+        for firstFeature in Card.Feature.allCases {
+            for secondFeature in Card.Feature.allCases {
+                for thirdFeature in Card.Feature.allCases {
+                    for fourthFeature in Card.Feature.allCases {
+                        cards.append(Card(firstFeature: firstFeature,
+                                          secondFeature: secondFeature,
+                                          thirdFeature: thirdFeature,
+                                          fourthFeature: fourthFeature)
+                        )
                     }
                 }
             }
         }
-        //cards.shuffle()
+        cards.shuffle()
         print("Game Initialized with \(cards.count) cards")
     }
 

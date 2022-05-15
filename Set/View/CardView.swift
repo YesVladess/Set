@@ -9,11 +9,8 @@ import SwiftUI
 
 struct CardView: View {
 
-    let card: SetGame.Card
-
-    private var numberOfShapes: CGFloat {
-        CGFloat(card.numberOfShapes)
-    }
+    typealias Card = SetGameViewModel.CardViewModel
+    let card: Card
 
     var body: some View {
         GeometryReader(content: { geometry in
@@ -72,7 +69,7 @@ struct CardView: View {
     private func getShapes(size: CGSize) -> some View {
         let coloredStyledShape = getColoredStyledShape(size: size)
         VStack(alignment: .center, spacing: 5) {
-            switch card.numberOfShapes {
+            switch card.quantity {
             case 1:
                 coloredStyledShape
             case 2:
@@ -97,10 +94,10 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGame.Card(numberOfShapes: 3,
-                                    shape: .squiggle,
-                                    style: .stripped,
-                                    color: .blue)
+        CardView(card: SetGameViewModel.CardViewModel(shape: .squiggle,
+                                                      style: .stripped,
+                                                      color: .green,
+                                                      quantity: 2)
         )
         .previewInterfaceOrientation(.portrait)
     }

@@ -70,16 +70,16 @@ struct Squiggle: Shape {
         cp1 = CGPoint(x: drawingRect.origin.x + rectWidth * 0.40,
                       y: drawingRect.origin.y + rectHeight * 0.80)
         cp2 = CGPoint(x: drawingRect.origin.x + rectWidth * 0.35,
-                      y: drawingRect.origin.y + rectHeight * 0.75)
+                      y: drawingRect.origin.y + rectHeight * 0.70)
         p.addCurve(to: point, control1: cp1, control2: cp2)
 
         // Draw 6th curve to the start point
         point = CGPoint(x: drawingRect.origin.x + rectWidth * 0.05,
-                        y: drawingRect.origin.y + rectHeight * 0.39)
+                        y: drawingRect.origin.y + rectHeight * 0.40)
         cp1 = CGPoint(x: drawingRect.origin.x + rectWidth * 0.2,
                       y: drawingRect.origin.y + rectHeight * 0.95)
-        cp2 = CGPoint(x: drawingRect.origin.x + rectWidth * 0.3,
-                      y: drawingRect.origin.y + rectHeight * 0.80)
+        cp2 = CGPoint(x: drawingRect.origin.x + rectWidth * 0.01,
+                      y: drawingRect.origin.y + rectHeight * 0.75)
         p.addCurve(to: point, control1: cp1, control2: cp2)
 
         return p
