@@ -33,7 +33,7 @@ struct SetGameView: View {
     }
 
     @ViewBuilder
-    private func cardView(for card: SetGameViewModel.CardViewModel) -> some View {
+    private func cardView(for card: CardViewModel) -> some View {
         CardView(card: card)
             .onTapGesture {
                 game.choose(card)

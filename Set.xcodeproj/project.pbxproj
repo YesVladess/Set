@@ -19,6 +19,8 @@
 		5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF501282F9D7E0091C0F2 /* Diamond.swift */; };
 		5A7BF50528300F920091C0F2 /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BF50428300F920091C0F2 /* Oval.swift */; };
 		5AFC9F4428310F5500362857 /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC9F4328310F5500362857 /* Squiggle.swift */; };
+		5AFC9F472831A2D600362857 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC9F462831A2D600362857 /* Card.swift */; };
+		5AFC9F4A2831A37900362857 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC9F492831A37900362857 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		5A7BF501282F9D7E0091C0F2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		5A7BF50428300F920091C0F2 /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
 		5AFC9F4328310F5500362857 /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
+		5AFC9F462831A2D600362857 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		5AFC9F492831A37900362857 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +71,12 @@
 		5A7BF4E3282EF1870091C0F2 /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				5A7BF4E4282EF1870091C0F2 /* SetApp.swift */,
-				5A7BF4F8282EF50B0091C0F2 /* SetGameViewModel.swift */,
-				5A7BF4FA282EF51E0091C0F2 /* SetGame.swift */,
+				5AFC9F452831A2C400362857 /* Model */,
+				5AFC9F482831A34800362857 /* ViewModel */,
 				5A7BF500282F11260091C0F2 /* View */,
 				5A7BF4E8282EF18C0091C0F2 /* Assets.xcassets */,
 				5A7BF4EA282EF18C0091C0F2 /* Preview Content */,
+				5A7BF4E4282EF1870091C0F2 /* SetApp.swift */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -105,6 +109,24 @@
 				5AFC9F4328310F5500362857 /* Squiggle.swift */,
 			);
 			path = Shapes;
+			sourceTree = "<group>";
+		};
+		5AFC9F452831A2C400362857 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BF4FA282EF51E0091C0F2 /* SetGame.swift */,
+				5AFC9F462831A2D600362857 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5AFC9F482831A34800362857 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BF4F8282EF50B0091C0F2 /* SetGameViewModel.swift */,
+				5AFC9F492831A37900362857 /* CardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,8 +207,10 @@
 				5A7BF4FF282F11110091C0F2 /* AnyShape.swift in Sources */,
 				5A7BF502282F9D7E0091C0F2 /* Diamond.swift in Sources */,
 				5A7BF4FB282EF51E0091C0F2 /* SetGame.swift in Sources */,
+				5AFC9F4A2831A37900362857 /* CardViewModel.swift in Sources */,
 				5A7BF4F5282EF3F00091C0F2 /* SetGameView.swift in Sources */,
 				5A7BF4F9282EF50B0091C0F2 /* SetGameViewModel.swift in Sources */,
+				5AFC9F472831A2D600362857 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +345,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +357,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -350,6 +375,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -361,7 +387,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

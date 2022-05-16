@@ -9,18 +9,25 @@ import SwiftUI
 
 struct CardView: View {
 
-    typealias Card = SetGameViewModel.CardViewModel
-    let card: Card
+    let card: CardViewModel
 
     var body: some View {
         GeometryReader(content: { geometry in
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
                 shape.fill().foregroundColor(.white)
-                shape.stroke(lineWidth: 1)
+                if card.isChosen {
+                    shape.stroke(.green, lineWidth: geometry.size.width * 0.05)
+                } else {
+                    shape.stroke(.black, lineWidth: geometry.size.width * 0.05)
+                }
+                //shape.stroke(.red, lineWidth: 3)
                 getShapes(size: geometry.size)
             }
         })
+//        .onTapGesture {
+//            isChosen.toggle()
+//        }
     }
 
     @ViewBuilder
@@ -93,12 +100,12 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGameViewModel.CardViewModel(id: 3,
-                                                      shape: .squiggle,
-                                                      style: .stripped,
-                                                      color: .green,
-                                                      quantity: 2)
-        )
+        CardView(card: CardViewModel(id: 3,
+                                     shape: .oval,
+                                     style: .stripped,
+                                     color: .blue,
+                                     quantity: 1)
+        ).frame(width: 200, height: 400, alignment: .center)
         .previewInterfaceOrientation(.portrait)
     }
 }
