@@ -34,7 +34,7 @@ struct SetGame {
                 }
             }
         }
-        //deck.shuffle()
+        deck.shuffle()
         deal(cards: startHand)
         print("Game Initialized with \(deck.count) cards. \(hand.count) cards are in play")
     }
@@ -42,7 +42,13 @@ struct SetGame {
     // MARK: Public methods
 
     mutating func choose(_ card: Card) {
-        // TODO: What if it contains it already?
+        if selectedCards.count == 3 {
+            selectedCards = []
+        }
+        if let selectedCardIndex = selectedCards.firstIndex(where: { $0.id == card.id }) {
+            selectedCards.remove(at: selectedCardIndex)
+            return
+        }
         selectedCards.append(card)
         if selectedCards.count == 3 {
             if cardsAreSet(first: selectedCards[0], second: selectedCards[1], third: selectedCards[2]) {
@@ -51,7 +57,6 @@ struct SetGame {
                     hand = hand.filter { $0.id != cardId }
                 }
             }
-            selectedCards = []
         }
     }
 

@@ -32,14 +32,19 @@ struct SetGameView: View {
         }
     }
 
-    @ViewBuilder
     private func cardView(for card: CardViewModel) -> some View {
-        CardView(card: card)
+        var card = card
+        if var chosenCard = game.chosenCards.first(where: { $0.id == card.id }) {
+            if game.chosenCards.count == 3 {
+                chosenCard.state = .mismatched
+            }
+            card = chosenCard
+        }
+        return CardView(card: card)
             .onTapGesture {
                 game.choose(card)
             }
             .padding(DrawingConstants.cardPadding)
-
     }
 
     private var newGameButton: some View {

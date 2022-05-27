@@ -16,18 +16,17 @@ struct CardView: View {
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
                 shape.fill().foregroundColor(.white)
-                if card.isChosen {
+                switch card.state {
+                case .chosen:
                     shape.stroke(.green, lineWidth: geometry.size.width * 0.05)
-                } else {
+                case .stable:
                     shape.stroke(.black, lineWidth: geometry.size.width * 0.05)
+                case .mismatched:
+                    shape.stroke(.red, lineWidth: geometry.size.width * 0.05)
                 }
-                //shape.stroke(.red, lineWidth: 3)
                 getShapes(size: geometry.size)
             }
         })
-//        .onTapGesture {
-//            isChosen.toggle()
-//        }
     }
 
     @ViewBuilder
@@ -101,6 +100,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(card: CardViewModel(id: 3,
+                                     state: .mismatched,
                                      shape: .oval,
                                      style: .stripped,
                                      color: .blue,

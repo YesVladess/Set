@@ -9,8 +9,13 @@ import Foundation
 
 struct CardViewModel: Identifiable {
 
+    enum CardState {
+        case chosen
+        case stable
+        case mismatched
+    }
     var id: Int
-    var isChosen: Bool = false
+    var state: CardState
 
     let shape: CardShape
     let style: Style

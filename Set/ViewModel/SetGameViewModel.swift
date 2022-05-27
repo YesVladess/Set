@@ -14,6 +14,17 @@ class SetGameViewModel: ObservableObject {
     var cards: [CardViewModel] {
         model.hand.map { card in
             CardViewModel(id: card.id,
+                          state: .stable,
+                          shape: CardViewModel.CardShape(rawValue: card.firstFeature.rawValue)!,
+                          style: CardViewModel.Style(rawValue: card.secondFeature.rawValue)!,
+                          color: CardViewModel.CardColor(rawValue: card.thirdFeature.rawValue)!,
+                          quantity: card.fourthFeature.rawValue + 1)
+        }
+    }
+    var chosenCards: [CardViewModel] {
+        model.selectedCards.map { card in
+            CardViewModel(id: card.id,
+                          state: .chosen,
                           shape: CardViewModel.CardShape(rawValue: card.firstFeature.rawValue)!,
                           style: CardViewModel.Style(rawValue: card.secondFeature.rawValue)!,
                           color: CardViewModel.CardColor(rawValue: card.thirdFeature.rawValue)!,
@@ -28,8 +39,7 @@ class SetGameViewModel: ObservableObject {
     // MARK: - Intent
 
     func choose(_ cardViewModel: CardViewModel) {
-        // TODO: Selected card states(wrong/matched/selected + deselection
-        guard let card = model.hand.filter({ $0.id == cardViewModel.id }).first else { return }
+        guard let card = model.hand.first(where: { $0.id == cardViewModel.id}) else { return }
         model.choose(card)
     }
 
