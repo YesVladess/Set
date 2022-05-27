@@ -15,9 +15,7 @@ struct SetGame {
     private(set) var selectedCards: [Card]
     private(set) var score: Int = 0
 
-    var isDeckEmpty: Bool {
-        deck.isEmpty
-    }
+    var isDeckEmpty: Bool { deck.isEmpty }
 
     // MARK: Initialization
 
