@@ -14,13 +14,6 @@ struct CardViewModel: Identifiable {
         case stable
         case mismatched
     }
-    var id: Int
-    var state: CardState
-
-    let shape: CardShape
-    let style: Style
-    let color: CardColor
-    let quantity: Int
 
     enum CardShape: Int, CaseIterable {
         case diamond
@@ -39,5 +32,13 @@ struct CardViewModel: Identifiable {
         case green
         case blue
     }
+    
+    var id: Int
+    var state: CardState
+
+    let shape: CardShape
+    let style: Style
+    let color: CardColor
+    let quantity: Int
 
 }

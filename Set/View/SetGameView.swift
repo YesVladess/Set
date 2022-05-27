@@ -65,7 +65,7 @@ struct SetGameView: View {
             VStack {
                 Image(systemName: "plus.rectangle.fill").font(.largeTitle)
                 Text("Deal more")
-            }
+            }.disabled(game.isDeckEmpty)
         }
     }
 

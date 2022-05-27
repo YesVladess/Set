@@ -15,6 +15,10 @@ struct SetGame {
     private(set) var selectedCards: [Card]
     private(set) var score: Int = 0
 
+    var isDeckEmpty: Bool {
+        deck.isEmpty
+    }
+
     // MARK: Initialization
 
     init(startHand: Int) {
@@ -56,6 +60,7 @@ struct SetGame {
                     let cardId = card.id
                     hand = hand.filter { $0.id != cardId }
                 }
+                deal(cards: 3)
             }
         }
     }

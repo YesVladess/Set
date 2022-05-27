@@ -10,6 +10,7 @@ import SwiftUI
 class SetGameViewModel: ObservableObject {
 
     @Published private var model: SetGame
+    var isDeckEmpty: Bool { model.isDeckEmpty }
     var score: Int { model.score }
     var cards: [CardViewModel] {
         model.hand.map { card in
